@@ -43,7 +43,7 @@ void menu(){
 
     int funcionalidade;
     do{
-    printf("\n\n-=============-\n-=| MERCADO |=-\n-=============-\n\n");
+    printf("\n-=============-\n-=| MERCADO |=-\n-=============-\n\n");
     printf("(1) Cadastrar Produtos;\n(2) Listar Produtos;\n(3) Comprar Produtos;\n(4) Visualizar Carrinho;\n(5) Informacoes Produtos;\n(6) Fechar Pedido;\n(0) Sair do Sistema;\n");
     printf("\nDigite a funcionalidade desejada: ");
     scanf("%d", &funcionalidade);
@@ -69,7 +69,7 @@ void menu(){
         case 0:
             break;
         default:
-            printf("\nNumero Invalido\n\n");
+            printf("\nValor Invalido\n\n");
             break;
         }
 
@@ -134,9 +134,36 @@ void atualizarInformacoes(){
     printf("\n-== Atualizar Produto ==-\n");
     printf("Digite o codigo do produto que deseja atualizar: ");
     scanf("%d", &codigo);
-    printf("Agora, digite o que deseja alterar do produto:\n(1) Nome\n(2) Preco\n(3) Codigo\n");
-    scanf("%d", &opcao);
+    int produto = pegarProdutoPorCodigo(codigo);
+    if (produto != -1){ // Caso o produto exista
+        printf("\n(1) Nome\n(2) Preco\n(3) Codigo\nDigite o que deseja alterar do produto:");
+        scanf("%d", &opcao);
+        switch (opcao){
+        case 1:
+            printf("\nDigite o novo nome: ");
+            scanf(" %29[^\n]s", p[produto].nome);
+            break;
     
+        case 2:
+            printf("\nDigite o novo preco: ");
+            scanf("%f", p[produto].preco);
+            break;
+        
+        case 3:
+            printf("\nDigite o novo codigo: ");
+            scanf("%d", p[produto].codigo);
+            break;
+
+        default:
+            printf("\nValor invalido!\n");
+            atualizarInformacoes();
+            break;
+        }
+        printf("Produto atualizado!\n");
+    } else {
+        printf("\nProduto nao encontrado!\n");
+        atualizarInformacoes();
+    }
 }
 
 void comprarProduto(){
@@ -208,7 +235,7 @@ void removerDoCarrinho(){
 void fecharPedido(){
     //Calcula e exibe o valor total da compra e esvazia o carrinho.
     //Ao fechar o pedido, o carrinho deve ser esvaziado, e o sistema deve retornar ao menu principal.
-    float total = 0, opcao = 0; //Variavel auxiliar
+    float total = 0, opcao; //Variavel auxiliar
     printf("\n-== Fechamento de Pedido ==-\n");
     for (int i = 0; i < totalCarrinho; i++){
         if (c[i].quantidade != 1){
