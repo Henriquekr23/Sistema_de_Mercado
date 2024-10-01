@@ -7,7 +7,8 @@ Produto: Uma estrutura que armazena informações de cada produto, como o códig
 Carrinho: Estrutura que relaciona um produto com sua quantidade no carrinho.
 p[MAX] e c[MAX]: Arrays para armazenar até 50 produtos e itens no carrinho.
 totalProdutos e totalCarrinho: Variáveis que controlam a quantidade de produtos cadastrados e a quantidade de itens no carrinho, respectivamente.
-Funções
+
+# Funções:
 
 1. main
 Função principal que chama o menu. Serve como ponto de entrada para o programa.
