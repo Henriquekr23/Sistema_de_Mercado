@@ -57,5 +57,5 @@ Explicação: Percorre o array de produtos cadastrados e retorna a posição no 
 Responsabilidade: Exibe informações de um produto específico com base no código fornecido.
 Explicação: O usuário insere o código e recebe as informações detalhadas do produto, como nome e preço.
 
-*Resumo Geral*
+# Resumo Geral
 Este sistema simula um ambiente de compras, onde o usuário pode adicionar, remover e listar produtos, além de manipular o carrinho de compras. Cada função tem uma responsabilidade clara, garantindo a modularidade do código. A interação ocorre através de um menu de opções que gerencia o fluxo do programa.
